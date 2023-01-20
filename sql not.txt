@@ -1,0 +1,31 @@
+--tablo oluşturma
+create table author(
+	id Serial PRIMARY Key,
+	first_name varchar(50) not null,
+	last_name varchar(50) not null,
+	email varchar(100),
+	birtday date
+);
+
+--veri ekleme
+INSERT INTO author(first_name, last_name, email, birtday)
+	VALUES 
+	('Haruki','Murakami','haruki@marukami.com','1948-11-07'),
+	('Sabahattin','Ali','sabahattin@ali.com','1914-07-11'),
+	('Orhan','Pamuk','orhan@pamuk.com','1950-04-14'),
+	('Halide Edip','Adıvar','halide@edip.com','1884-07-11'),
+	('Zygmunt','Bauman','zygmunt@ali.com','1911-07-12');
+	
+	
+-- author tablosunu kullanarak yeni tablo oluşturma
+create table author2(LIKE author);
+
+-- author tablosunu kullanarak yeni tablo oluşturma ve author içerisindeki verileri de aktarma
+create table author3 as
+select * from author
+
+--tablo silme
+drop table author3
+
+--tablo silmede tablo yok hatası almamak için
+drop table if exists author3
