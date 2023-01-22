@@ -29,3 +29,11 @@ drop table author3
 
 --tablo silmede tablo yok hatası almamak için
 drop table if exists author3
+
+--başka tablo ile forein key oluşturma
+create table book(
+	id serial primary key,
+	title varchar(100) not null,
+	page_number integer not null,
+	author_id integer references author(id)
+);
